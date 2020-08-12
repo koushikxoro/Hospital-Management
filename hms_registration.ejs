@@ -1,0 +1,113 @@
+<!DOCTYPE  html>
+<html>
+	<head>
+		<title>Hospital Management System</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" type="text/css" href="../style/stylesheet.css">
+		<header id="h">	
+			<span style="float: left; padding-left: 5px;"><i class="fas fa-circle" style="font-size:10px; padding-left: 3px;color:blue;"></i>
+		    <i class="fas fa-circle" style="font-size:10px; padding-left: 3px; color:blue;"></i>
+			<i class="fas fa-circle" style="font-size:10px; padding-left: 3px;color:blue;"></i></span>
+			<label id="head1">ABC HOSPITAL MANAGEMENT SYSTEM</label></header>
+		<script src="https://kit.fontawesome.com/a076d05399.js"></script>
+	</head>
+	<body>
+		<header>
+			<h1>ABC Hospital Management System</h1>
+			<select name="patient" class="dropdown"  onchange="location = this.value;">
+                <option value="patients">Patients</option>
+				<option value="/patientsregistration">patients registration</option>
+				<option value="/Update_patient">update patients</option>
+				<option value="/Deletepatients">Delete patients</option>
+				<option value="/viewpatients">view patients</option>
+				<option value="/searchpatients">search patients</option>
+				<option value="/patientsbilling">patients billing</option>	
+            </select>&nbsp;&nbsp;
+			<select name="pharmacy" class="dropdown" onchange="location = this.value;"> 
+				<option value="Pharmacy">Pharmacy</option>
+				<option value="/searchpatients">Get patient details</option>
+				<option value="/Issuemedicine">Issue medicine</option>
+			</select>&nbsp;&nbsp;
+			<select name="diagnostics" class="dropdown" onchange="location = this.value;">
+				<option value="Diagnostics">Diagnostics</option>
+				<option value="/searchpatients">Get patient details</option>
+				<option value="/diagonstic">diagonstic</option>
+			</select>&nbsp;&nbsp;
+			<br><br><br>
+		</header>
+		<br>
+		<form action="/register" method="post">
+			<h2 style="text-align: center">Patient Registration</h2><br>
+			<label for="id" class="lb"><b>Patient SSN ID</b><sup class="star">*</sup></label>
+			&nbsp;&nbsp;<input type="text"  name="pid"  style="float: right"required><br><br>
+			<label for="name" class="lb"><b>Patient Name</b><sup class="star">*</sup></label>
+			&nbsp;&nbsp;<input type="text"  name="pname"  style="float: right" required><br><br>
+			<label for="age" class="lb"><b>Patient Age</b><sup class="star">*</sup></label>
+			&nbsp;&nbsp;<input type="text"  name="p_age"  style="float: right" required><br><br>
+			<label for="Date" class="lb"><b>Date of Admission</b><sup class="star">*</sup></label>
+			<input type="date"  name="date"  style="float: right" required><br><br>
+			<label for="bed" class="lb"><b>Type of bed</b><sup class="star">*</sup></label>
+			&nbsp;&nbsp;<select name="bed"  style="float: right; width: inherit;"  id="stateId">
+                <option value="">Select Bed</option>   
+              <option value="singleICU">Single ICU</option>
+              <option value="doubleICU">Double ICU</option>
+              <option value="general">General Ward</option>
+              
+            </select><br><br>
+
+			<label for="add" class="lb"><b>Address</b><sup class="star">*</sup></label>
+			&nbsp;&nbsp;<input type="text"  name="address" maxlength = "35"  style="float: right" required><br><br>
+			<label for="state" class="lb"><b>State</b><sup class="star">*</sup></label>
+			&nbsp;&nbsp;<select name="state"  style="float: right; width: inherit;"  id="stateId">
+                <option value="">Select State</option>   
+			  <option value="Andaman and Nicobar Islands ">Andaman and Nicobar Islands </option>
+			  <option value="Andhra Pradesh">Andhra Pradesh</option>
+			  <option value="Assam">Assam</option>
+			  <option value="Bihar">Bihar</option>
+			  <option value="Chandigarh ">Chandigarh</option>
+			  <option value="Chhattisgarh">Chhattisgarh</option>
+			  <option value="Dadra and Nagar Haveli and Daman and Diu">Dadra and Nagar Haveli and Daman and Diu</option>
+			  <option value="Delhi">Delhi</option>
+			  <option value="Goa">Goa</option>
+			  <option value="Gujarat">Gujarat</option>
+			  <option value="Haryana">Haryana</option>
+			  <option value="Himachal Pradesh">Himachal Pradesh</option>
+			  <option value="Jammu and Kashmir">Jammu and Kashmir</option>
+			  <option value="Jharkhand">Jharkhand</option>
+			  <option value="Karnataka">Karnataka</option>
+			  <option value="Kerala">Kerala</option>
+			  <option value="Ladakh">Ladakh</option>
+			  <option value="Lakshadweep">Lakshadweep</option>
+			  <option value="Madhya Pradesh">Madhya Pradesh</option>
+			  <option value="Maharashtra">Maharashtra</option>
+			  <option value="Manipur">Manipur</option>
+			  <option value="Meghalaya">Meghalaya</option>
+			  <option value="Mizoram">Mizoram</option>
+			  <option value="Nagaland">Nagaland</option>
+			  <option value="Odisha">Odisha</option>
+			  <option value="Puducherry">Puducherry </option>
+			  <option value="Punjab">Punjab</option>
+			  <option value="Rajasthan">Rajasthan</option>
+			  <option value="Sikkim">Sikkim</option>
+			  <option value="Tamil Nadu">Tamil Nadu</option>
+			  <option value="Telangana">Telangana</option>
+			  <option value="Tripura">Tripura</option>
+			  <option value="Uttar Pradesh">Uttar Pradesh</option>
+			  <option value="Uttarakhand">Uttarakhand</option>
+			  <option value="West Bengal">West Bengal</option>
+            </select><br><br>
+			<label for="city" class="lb"><b>City</b><sup class="star">*</sup></label>
+			&nbsp;&nbsp;<input type="text"  name="city" maxlength = "35"  style="float: right" required><br><br>
+                
+			<label id="note" class="lb"><sup>*</sup>-mandatory</label><br><br>
+			&nbsp;&nbsp;<input class="button1" type="submit" style="margin-left:35px;" value="submit">
+			&nbsp;&nbsp;&nbsp;&nbsp;<button class="button1" type="reset" style="margin-left:35px;">Reset</button>
+			<br>
+			<br>
+		</form>
+		<br>
+		<br>
+	</body>
+
+
+</html>

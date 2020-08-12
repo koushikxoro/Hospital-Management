@@ -1,0 +1,179 @@
+<!DOCTYPE  html>
+<html>
+	<head>
+		<title>Hospital Management System</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" type="text/css" href="../style/stylesheet.css">
+		<header id="h">	
+			<span style="float: left; padding-left: 5px;"><i class="fas fa-circle" style="font-size:10px; padding-left: 3px; color:blue;"></i>
+		    <i class="fas fa-circle" style="font-size:10px; padding-left: 3px; color:blue;"></i>
+			<i class="fas fa-circle" style="font-size:10px; padding-left: 3px; color:blue;"></i></span>
+			<label id="head1">ABC HOSPITAL MANAGEMENT SYSTEM</label></header>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		<script src="https://kit.fontawesome.com/a076d05399.js"></script>
+		
+	</head>
+	<body>
+		<header>
+			<h1>ABC Hospital Management System</h1>
+			<select name="patient" class="dropdown"  onchange="location = this.value;">
+                <option value="patients">Patients</option>
+				<option value="/patientsregistration">patients registration</option>
+				<option value="/Update_patient">update patients</option>
+				<option value="/Deletepatients">Delete patients</option>
+				<option value="/viewpatients">view patients</option>
+				<option value="/searchpatients">search patients</option>
+				<option value="/patientsbilling">patients billing</option>	
+            </select>&nbsp;&nbsp;
+			<select name="pharmacy" class="dropdown" onchange="location = this.value;"> 
+				<option value="Pharmacy">Pharmacy</option>
+				<option value="/searchpatients">Get patient details</option>
+				<option value="/Issuemedicine">Issue medicine</option>
+			</select>&nbsp;&nbsp;
+			<select name="diagnostics" class="dropdown" onchange="location = this.value;">
+				<option value="Diagnostics">Diagnostics</option>
+				<option value="/searchpatients">Get patient details</option>
+				<option value="/diagonstic">diagonstic</option>
+			</select>&nbsp;&nbsp;
+			<br><br><br>
+		</header>
+		<br>
+		
+		<div>
+			<h2>PATIENT BILLING</h2>
+		</div>
+		<div>
+			<table class="tab">
+              <thead>
+                 <tr>
+					<th>Patient Id</th>
+					<th>Name</th>
+					<th>Age</th>
+					<th>Address</th>
+					<th>Date of Joining</th>
+					<th>Date of Discharge</th>
+					<th>Type of room</th>
+                 </tr>
+              </thead>
+			  <tbody>
+				<td>
+				<form action="/final" method="post">
+					<input type="text" placeholder="Enter patient id" name="pid"  required>
+					<button type="submit" id="search1" ><i class="fa fa-search"></i></button>
+				</form>
+			  </td>
+			  <%
+			  var a=(new Date()).getFullYear()+"-"+("0"+((new Date()).getMonth()+1)).substr(-2,2)+"-"+(new Date()).getDate()
+				 var b=((new Date(a))-(new Date(result.date)))/(24*60*60*1000)
+				 var tot=0
+				 if(result.bed=="singleICU")
+				 {
+					 tot+=b*10000
+				 }
+				 else if(result.bed=="doubleICU")
+				 {
+					 tot+=b*8000
+				 }
+				 else if(result.bed=="general")
+				 {
+					 tot+=b*2000
+				 }
+				 var tot1=0
+				 result.medissued.forEach((doc)=>{
+					tot1+=Number(doc.at)*Number(doc.qty)
+				 })
+				 var tot2=0
+				 result.test.forEach((doc)=>{
+					 tot2+=Number(doc.cost)
+				 })
+				 var tot3=tot1+tot2+tot
+			  %>
+			  <td><%=result.pname%></td>
+			  <td><%=result.p_age%></td>
+			  <td><%=result.address%></td>
+			  <td><%=result.date%></td>
+			  <td><%=a%></td>
+			  <td><%=result.bed%></td>
+			  </tbody>
+			</table>
+		</div>
+			<table class="tab4">
+				<tr>
+				<td class="tdd"><label style="font-display: block; font-family: sans-serif; font-size: 18px;"> No of days:&nbsp; </label><input type="text" name="daycount" value="<%=b%>" readonly></td>
+				<td class="tdd"><label  style="font-display: block; font-family: sans-serif; font-size: 18px;"> Total bill for the room: &nbsp;</label><input type="text" name="roombill" value="<%=tot%>" readonly></td>
+				</tr>
+			</table>
+		<br>
+		<br>
+			<br>
+		<div>
+			<h3>PHARMACY CHARGES</h3>
+			<table class="tab">
+              <thead>
+                 <tr >
+					<th>Medicine</th>
+					<th>Quantity</th>
+					<th>Rate</th>
+					<th>Amount after discount</th>
+                 </tr>
+              </thead>
+			  <%if(result.medissued.length){%>
+				<tbody>
+					
+					<%result.medissued.forEach((med1)=>{%>
+					  <tr>
+					  <td><%=med1.med%></td>
+						<td><%=med1.qty%></td>
+						<td><%=med1.rt%></td>
+						<td><%=med1.at%></td>
+					  </tr>
+					<%})%>
+				</tbody>
+			<%}%>
+			</table>
+		</div>
+		<table class="tab4">
+				<tr>
+				<td class="tdd"><label style="font-display: block; font-family: sans-serif; font-size: 18px;"> BILL FOR PHARMACY:&nbsp; </label><input type="text" name="daycount" value="<%=tot1%>" readonly></td>
+				</tr>
+			</table>
+		<br>
+		<br>
+		<div>
+			<h3>DIAGNOSTICS CHARGES</h3>
+			<table class="tab">
+              <thead>
+                 <tr>
+					<th>Name of test</th>
+					<th>Amount</th>
+					
+                 </tr>
+              </thead>
+			  <%if(result.test.length){%>
+				<tbody>
+					
+					<%result.test.forEach((doc)=>{%>
+					  <tr>
+					  <td><%=doc.tname%></td>
+						<td><%=doc.cost%></td>
+						
+					  </tr>
+					<%})%>
+				</tbody>
+			<%}%>
+			
+			 </table>
+		</div>
+		<table class="tab4">
+				<tr>
+				<td class="tdd"><label style="font-display: block; font-family: sans-serif; font-size: 18px;"> BILL FOR DIAGNOSTICS:&nbsp; </label><input type="text" name="daycount" value="<%=tot2%>" readonly></td>
+				</tr>
+			    <tr>
+					<td class="tdd"><label style="font-display: block; font-family: sans-serif; font-size: 28px;"><strong>GRAND TOTAL:&nbsp;</strong> </label><input type="text" name="daycount" value="<%=tot3%>" readonly></td>
+			   </tr>
+		</table>
+		<br>
+		<div><button type=submit class="button4">CONFIRM</button></div>
+		
+	</body>
+</html>

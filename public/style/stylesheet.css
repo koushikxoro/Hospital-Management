@@ -1,0 +1,144 @@
+
+#h{
+	color: white;
+	background-color: black;
+	font-size:13px;	
+}
+header {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  background-color:#87CEEB;
+  text-align: center;
+  font-size: 20px;
+  color:black;
+  border: 3px solid black;
+}
+body{
+   background-color:#0066FF;
+   text-align: center;
+   margin: 0;
+}
+.button1{
+ background-color: black;
+ border: 12px solid black;
+ border-radius: 12px;
+ color: white;
+ padding: 10px 24px;
+
+}
+.button2{
+ background-color: black;
+ border: 12px solid black;
+ border-radius: 12px;
+ color: white;
+ padding: 10px 24px;
+ margin-left: 65px;
+ font-size: 18px; 	
+ align-content: center;
+
+}
+.button3{
+ background-color: black;
+ border: 12px solid black;
+ border-radius: 12px;
+ color: white;
+ padding: 10px 24px;
+ margin-left: 75px;
+ font-size: 10px;
+}
+.button4
+{
+	font-size: 25px;  
+	padding: 10px;
+	padding-right: 23px;
+	background-color: black;
+	border: 12px solid black;
+	color: white;
+	margin: 20px;
+	width: 28%;
+	align-content: center;
+}
+span
+{
+	
+}
+.star{
+	color: darkred;
+	font-size: 15px;
+}
+#search1{
+	margin: auto 0px;
+ 
+}
+.lb{
+	padding-right:65px;
+	display: inline-block;
+	font: 20px;
+}
+.dropdown{
+	font-family: sans-serif;
+	font-size: 20px;
+	font-style: normal;
+	padding-left: 12px;
+	padding-right: 8px;
+	border: 2px solid black;
+}
+form{
+	display: inline-block;
+	text-align: left;
+}
+#lpage{
+  display: inline-block;
+  align-content: center;
+  width: 550px; 
+  height: 550px;
+  background: #0066FF; 
+  border: 5px solid black"
+}
+#login
+{
+	text-align: center;
+	padding: 30px;
+	border: 5px solid black;
+}
+#ft{
+	display: inline-block;
+	text-align: center;
+}
+table, th {
+  border: 2px solid black;
+  border-collapse: collapse;
+  padding: 8px;	
+  background-color: #303030;
+  color: #FFFFFF;
+}
+td{
+  border: 2px solid black;
+  border-collapse: collapse;
+  padding: 8px;	
+  background-color:whitesmoke;
+  color: #000000;
+}
+.tab
+{
+	margin-left: auto;
+	margin-right: auto;
+}
+.tab2
+{
+	margin-left: auto;
+	margin-right: auto;
+	border: none;
+}
+.tdd
+{
+	background-color: #0066FF;
+	border: 0px;
+}
+.tab4
+{
+	margin-left: auto;
+	margin-right: auto;
+	border: none;
+}
